@@ -1,0 +1,49 @@
+imagePullPolicy: Always
+
+app:
+  id: asdladmlkdm
+  name: CrossModel Cloud
+
+demoApplication:
+  name: theiacloud/theia-cloud-demo:0.12.0-next
+  pullSecret: ""
+  timeoutStrategy: "FIXEDTIME"
+  timeoutLimit: "30"
+  imagePullPolicy: IfNotPresent
+  # This overrides the default value and does not write the default values to the app definition
+  monitor: null
+
+hosts:
+  usePaths: true
+  configuration:
+    service: servicex
+    landing: trynow
+    instance: instances
+
+landingPage:
+  image: theiacloud/theia-cloud-landing-page:0.12.0-next
+  appDefinition: "theia-cloud-demo"
+  ephemeralStorage: false
+  logo: "logos/crossmodel.svg"
+
+keycloak:
+  enable: true
+  realm: "CrossModelCloud"
+  clientId: "crossmodel-cloud"
+  clientSecret: "uy6imjoOYx5SQBpaSsbgPUh0PujxHuOmkcX3m6vs8H2EgrXU"
+  cookieSecret: "aQaaT2NFyvp2hA2iQ4ItBUZGZ5TUTJkavJPs7kFoHXPPLz9a="
+
+operator:
+  eagerStart: false
+  bandwidthLimiter: "WONDERSHAPER"
+  sessionsPerUser: "1"
+  storageClassName: ""
+
+ingress:
+  instanceName: "theia-cloud-demo-ws-ingress"
+  clusterIssuer: letsencrypt-prod
+  theiaCloudCommonName: false
+  addTLSSecretName: false
+
+monitor:
+  enable: false

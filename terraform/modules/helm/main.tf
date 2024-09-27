@@ -235,7 +235,8 @@ resource "helm_release" "theia-cloud" {
   create_namespace = true
 
   values = [
-    "${file("${path.module}/theia-cloud.yaml")}"
+    "${file("${path.module}/crossmodel-cloud.yaml")}"
+    //"${file("${path.module}/theia-cloud.yaml")}"
   ]
 
   set {
